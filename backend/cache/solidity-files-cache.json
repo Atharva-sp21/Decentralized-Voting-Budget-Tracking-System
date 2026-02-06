@@ -1,0 +1,77 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/atharvashrikant/Desktop/Decentralized-Voting-Budget-Tracking-System/backend/contracts/Voting.sol": {
+      "lastModificationDate": 1770235374099,
+      "contentHash": "5cb021883272229cfbeb7be7733350dc",
+      "sourceName": "contracts/Voting.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Voting"
+      ]
+    },
+    "/Users/atharvashrikant/Desktop/Decentralized-Voting-Budget-Tracking-System/backend/contracts/Budget.sol": {
+      "lastModificationDate": 1770375065561,
+      "contentHash": "a35aac1ed4fdfab73485b57a67e82951",
+      "sourceName": "contracts/Budget.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Budget"
+      ]
+    }
+  }
+}
