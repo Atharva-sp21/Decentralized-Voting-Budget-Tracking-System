@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/atharvashrikant/Desktop/Decentralized-Voting-Budget-Tracking-System/backend/contracts/Voting.sol": {
-      "lastModificationDate": 1770235374099,
-      "contentHash": "5cb021883272229cfbeb7be7733350dc",
+      "lastModificationDate": 1774382060975,
+      "contentHash": "618e247aa18570058ba6a5b81abd622b",
       "sourceName": "contracts/Voting.sol",
       "solcConfig": {
         "version": "0.8.28",
@@ -38,8 +38,8 @@
       ]
     },
     "/Users/atharvashrikant/Desktop/Decentralized-Voting-Budget-Tracking-System/backend/contracts/Budget.sol": {
-      "lastModificationDate": 1770375065561,
-      "contentHash": "a35aac1ed4fdfab73485b57a67e82951",
+      "lastModificationDate": 1775489311853,
+      "contentHash": "8f949136cfa06c9201950bd01d92da80",
       "sourceName": "contracts/Budget.sol",
       "solcConfig": {
         "version": "0.8.28",
