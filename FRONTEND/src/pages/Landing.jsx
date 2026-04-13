@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
+import { VOTING_CONTRACT_ADDRESS } from "../contracts/contractConfig";
+import { votingABI } from "../contracts/votingABI";
 import "../styles/Landing.css";
 
 export default function Landing() {
@@ -17,7 +19,7 @@ export default function Landing() {
 
   async function connectWallet() {
     if (!window.ethereum) {
-      alert("MetaMask not installed! Please install MetaMask to continue.");
+      alert("MetaMask not installed!");
       return;
     }
     try {
@@ -30,17 +32,29 @@ export default function Landing() {
       const network = await provider.getNetwork();
       const chainId = Number(network.chainId);
 
-      console.log("DEBUG chainId from MetaMask:", chainId);
-
-      if (chainId !== 31337 && chainId !== 1337 && chainId !== 31337n) {
+      if (chainId !== 31337 && chainId !== 1337) {
         alert("Please switch MetaMask to Hardhat Localhost (31337)");
-        setStatus("Wrong network. Switch to Hardhat Localhost.");
+        setStatus("Wrong network!");
         setConnecting(false);
         return;
       }
 
+      const signer = provider.getSigner();
+      const userAddress = await signer.getAddress();
+
+      // Check if user is owner (admin)
+      const contract = new ethers.Contract(VOTING_CONTRACT_ADDRESS, votingABI, provider);
+      const ownerAddress = await contract.admin();
+
       setStatus("Connected! Redirecting...");
-      setTimeout(() => navigate("/voting"), 800);
+
+      if (ownerAddress.toLowerCase() === userAddress.toLowerCase()) {
+        // Owner → Admin Dashboard
+        setTimeout(() => navigate("/admin"), 800);
+      } else {
+        // Everyone else → Voter Dashboard
+        setTimeout(() => navigate("/voter"), 800);
+      }
 
     } catch (err) {
       console.error(err);
@@ -55,12 +69,11 @@ export default function Landing() {
       <div className="bg-glow" />
 
       <div className="landing-content">
-        <div className="badge">⛓ Powered by Blockchain</div>
-
+  
         <h1 className="landing-title">
           Decentralized Voting<br />
-         <span className="gradient-text">System</span>
-       </h1>
+          <span className="gradient-text">System</span>
+        </h1>
 
         <p className="landing-desc">
           Transparent, tamper-proof voting and budget tracking
@@ -97,7 +110,7 @@ export default function Landing() {
         {status && <p className="landing-status">{status}</p>}
 
         <p className="metamask-note">
-          🦊 Requires MetaMask on Hardhat Localhost (Chain ID: 31337)
+          Requires MetaMask on Hardhat Localhost (Chain ID: 31337)
         </p>
       </div>
     </div>
